@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +39,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun LemonadeScreen() {
     var currentStep by remember { mutableIntStateOf(1) }
+    var squeezesNeeded by remember { mutableIntStateOf(0) }
+    var squeezesDone by remember { mutableIntStateOf(0) }
 
     val (image, instruction) = when (currentStep) {
         1 -> Pair(
@@ -73,9 +76,19 @@ fun LemonadeScreen() {
                 .size(200.dp)
                 .clickable {
                     if (currentStep == 1) {
+                        squeezesNeeded = Random.nextInt(2, 5)
+                        squeezesDone = 0
                         currentStep = 2
+
+                    } else if (currentStep == 2) {
+                        squeezesDone++
+
+                        if (squeezesDone >= squeezesNeeded) {
+                            currentStep = 3
+                        }
                     }
                 }
+
         )
 
         Spacer(modifier = Modifier.height(24.dp))
