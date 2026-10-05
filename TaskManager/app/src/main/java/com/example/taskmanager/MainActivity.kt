@@ -11,6 +11,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 
 class MainActivity: ComponentActivity(){
     override fun onCreate(savedInstanceState: Bundle?){
@@ -34,9 +37,15 @@ fun TaskManager(){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ){
+        Image(
+            painter = painterResource(R.drawable.ic_task_completed),
+            contentDescription=null
+        )
+
         Text(
             text="All tasks completed",
             fontSize=24.sp,
+            fontWeight = FontWeight.Bold,
             modifier=Modifier.padding(top = 24.dp)
         )
 
