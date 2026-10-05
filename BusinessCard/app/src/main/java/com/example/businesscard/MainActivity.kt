@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -35,30 +34,41 @@ class MainActivity: ComponentActivity(){
 
 @Composable
 fun BusinessCard(){
-    Column(
-        modifier=Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    Box(
+        modifier=Modifier.fillMaxSize()
+    ){
+        Column(
+            modifier=Modifier.align(Alignment.Center),
+            horizontalAlignment = Alignment.CenterHorizontally
         ){
 
-        Image(
-            painter=painterResource(R.drawable.android_logo),
-            contentDescription = "Android logo",
-            modifier= Modifier.size(100.dp)
-        )
+            Image(
+                painter=painterResource(R.drawable.android_logo),
+                contentDescription = "Android logo",
+                modifier= Modifier.size(100.dp)
+            )
 
-        Spacer(modifier=Modifier.height(8.dp))
+            Spacer(modifier=Modifier.height(8.dp))
 
-        Text(
-            text="Alikhan Aitkaliev",
-            fontSize = 32.sp
-        )
+            Text(
+                text="Alikhan Aitkaliev",
+                fontSize = 32.sp
+            )
 
-        Text(
-            text="Android Developer",
-            fontSize=16.sp,
-            color=Color(0xFF006D3B)
-        )
+            Text(
+                text="Android Developer",
+                fontSize=16.sp,
+                color=Color(0xFF006D3B)
+            )
+        }
+
+        Box(
+            modifier=Modifier
+                .align(Alignment.BottomCenter)
+                .padding(bottom=48.dp)
+        ){
+            ContactInformation()
+        }
     }
 }
 
