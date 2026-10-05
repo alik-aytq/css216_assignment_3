@@ -3,45 +3,70 @@ package com.example.composequadrant
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.graphics.Color
 import com.example.composequadrant.ui.theme.ComposeQuadrantTheme
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+class MainActivity : ComponentActivity(){
+    override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            ComposeQuadrantTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+        setContent{
+            MaterialTheme{
+                ComposeQuadrant()
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun ComposeQuadrant(){
+    Column(
+        modifier=Modifier.fillMaxSize()
+    ){
+        Row(
+            modifier=Modifier.weight(1f)
+        ){
+            Quadrant(
+                color=Color(0xFFB69DF8),
+                modifier= Modifier.weight(1f)
+            )
+
+            Quadrant(
+                color=Color(0xFFF6EDFF),
+                modifier=Modifier.weight(1f)
+            )
+        }
+
+        Row(
+            modifier=Modifier.weight(1f)
+        ){
+            Quadrant(
+                color=Color(0xFFF6EDFF),
+                modifier=Modifier.weight(1f)
+            )
+
+            Quadrant(
+                color=Color(0xFFB69DF8),
+                modifier=Modifier.weight(1f)
+            )
+        }
+    }
 }
 
-@Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    ComposeQuadrantTheme {
-        Greeting("Android")
+fun Quadrant(
+    color: Color,
+    modifier:Modifier = Modifier
+){
+    Column(
+        modifier=modifier
+            .fillMaxHeight()
+            .background(color)
+    ){
+
     }
 }
