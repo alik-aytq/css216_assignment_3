@@ -9,12 +9,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
@@ -58,6 +58,32 @@ fun BusinessCard(){
             text="Android Developer",
             fontSize=16.sp,
             color=Color(0xFF006D3B)
+        )
+    }
+}
+
+@Composable
+fun ContactInformation(){
+    Column(
+        horizontalAlignment = Alignment.Start
+    ){
+        Text(
+            text="+7 778 853 27 49",
+            fontSize = 16.sp
+        )
+
+        Spacer(modifier=Modifier.height(12.dp))
+
+        Text(
+            text="@android_procrastinator",
+            fontSize=16.sp
+        )
+
+        Spacer(modifier=Modifier.height(12.dp))
+
+        Text(
+            text="240118014@sdu.edu.kz",
+            fontSize=16.sp
         )
     }
 }
