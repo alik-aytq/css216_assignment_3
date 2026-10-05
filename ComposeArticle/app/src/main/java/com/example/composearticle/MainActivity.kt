@@ -15,6 +15,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.layout.ContentScale
 
 class MainActivity: ComponentActivity(){
     override fun onCreate(savedInstanceState: Bundle?){
@@ -34,6 +37,13 @@ class MainActivity: ComponentActivity(){
 @Composable
 fun ComposeArticle(){
     Column{
+        Image(
+            painter=painterResource(R.drawable.bg_compose_background),
+            contentDescription = null,
+            modifier=Modifier.fillMaxWidth(),
+            contentScale=ContentScale.Crop
+        )
+
         Text(
             text="Jetpack Compose tutorial",
             fontSize=24.sp,
