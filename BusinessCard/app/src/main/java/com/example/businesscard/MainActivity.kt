@@ -13,6 +13,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.size
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 
 class MainActivity: ComponentActivity(){
     override fun onCreate(savedInstanceState: Bundle?){
@@ -36,6 +40,15 @@ fun BusinessCard(){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
         ){
+
+        Image(
+            painter=painterResource(R.drawable.android_logo),
+            contentDescription = "Android logo",
+            modifier= Modifier.size(100.dp)
+        )
+
+        Spacer(modifier=Modifier.height(8.dp))
+
         Text(
             text="Alikhan Aitkaliev",
             fontSize = 32.sp
