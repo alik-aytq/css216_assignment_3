@@ -74,6 +74,7 @@ fun LemonadeScreen() {
             contentDescription = instruction,
             modifier = Modifier
                 .size(200.dp)
+
                 .clickable {
                     if (currentStep == 1) {
                         squeezesNeeded = Random.nextInt(2, 5)
@@ -86,9 +87,14 @@ fun LemonadeScreen() {
                         if (squeezesDone >= squeezesNeeded) {
                             currentStep = 3
                         }
+
+                    } else if (currentStep == 3) {
+                        currentStep = 4
+
+                    } else {
+                        currentStep = 1
                     }
                 }
-
         )
 
         Spacer(modifier = Modifier.height(24.dp))
