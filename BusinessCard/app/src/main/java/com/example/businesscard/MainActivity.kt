@@ -13,9 +13,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material3.Icon
+import androidx.compose.ui.Alignment
 
 class MainActivity: ComponentActivity(){
     override fun onCreate(savedInstanceState: Bundle?){
@@ -74,27 +79,61 @@ fun BusinessCard(){
 
 @Composable
 fun ContactInformation(){
-    Column(
-        horizontalAlignment = Alignment.Start
-    ){
-        Text(
-            text="+7 778 853 27 49",
-            fontSize = 16.sp
-        )
+    Column{
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ){
+            Icon(
+                imageVector = Icons.Filled.Phone,
+                contentDescription = null,
+                tint= Color(0xFF006D3B)
+            )
+
+            Spacer(modifier=Modifier.width(16.dp))
+
+            Text(
+                text="+7 778 853 27 49",
+                fontSize = 16.sp
+            )
+        }
 
         Spacer(modifier=Modifier.height(12.dp))
 
-        Text(
-            text="@android_procrastinator",
-            fontSize=16.sp
-        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ){
+            Icon(
+                imageVector = Icons.Filled.Share,
+                contentDescription = null,
+                tint=Color(0xFF006D3B)
+            )
+
+            Spacer(modifier=Modifier.width(16.dp))
+
+            Text(
+                text="@android_procrastinator",
+                fontSize=16.sp
+            )
+        }
 
         Spacer(modifier=Modifier.height(12.dp))
 
-        Text(
-            text="240118014@sdu.edu.kz",
-            fontSize=16.sp
-        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ){
+            Icon(
+                imageVector = Icons.Filled.Email,
+                contentDescription = null,
+                tint=Color(0xFF006D3B)
+            )
+
+            Spacer(modifier=Modifier.width(16.dp))
+
+            Text(
+                text="240118014@sdu.edu.kz",
+                fontSize=16.sp
+            )
+        }
     }
 }
 
