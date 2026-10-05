@@ -10,6 +10,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -19,7 +23,6 @@ import androidx.compose.ui.unit.sp
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContent {
             MaterialTheme {
                 Surface(
@@ -34,24 +37,51 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun LemonadeScreen() {
+    var currentStep by remember { mutableIntStateOf(1) }
+
+    val (image, instruction) = when (currentStep) {
+        1 -> Pair(
+            R.drawable.lemon_tree,
+            "Tap the lemon tree to select a lemon"
+        )
+
+        2 -> Pair(
+            R.drawable.lemon_squeeze,
+            "Keep tapping the lemon to squeeze it"
+        )
+
+        3 -> Pair(
+            R.drawable.lemon_drink,
+            "Tap the lemonade to drink it"
+        )
+
+        else -> Pair(
+            R.drawable.lemon_restart,
+            "Tap the empty glass to start again"
+        )
+    }
+
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(R.drawable.lemon_tree),
-            contentDescription = "Lemon tree",
+            painter = painterResource(image),
+            contentDescription = instruction,
             modifier = Modifier
                 .size(200.dp)
                 .clickable {
+                    if (currentStep == 1) {
+                        currentStep = 2
+                    }
                 }
         )
 
         Spacer(modifier = Modifier.height(24.dp))
 
         Text(
-            text = "Tap the lemon tree to select a lemon",
+            text = instruction,
             fontSize = 18.sp
         )
     }
