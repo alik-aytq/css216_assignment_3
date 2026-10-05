@@ -3,27 +3,28 @@ package com.example.composearticle
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.composearticle.ui.theme.ComposeArticleTheme
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+class MainActivity: ComponentActivity(){
+    override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            ComposeArticleTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+        setContent{
+            MaterialTheme{
+                Surface(
+                    modifier=Modifier.fillMaxSize()
+                ){
+                    ComposeArticle()
                 }
             }
         }
@@ -31,17 +32,22 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+fun ComposeArticle(){
+    Column{
+        Text(
+            text="Jetpack Compose tutorial",
+            fontSize=24.sp,
+            modifier=Modifier.padding(16.dp)
+        )
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ComposeArticleTheme {
-        Greeting("Android")
+        Text(
+            text="Jetpack Compose is a modern toolkit for building native Android UI.",
+            modifier=Modifier.padding(16.dp)
+        )
+
+        Text(
+            text="In this tutorial, you build a simple UI component with declarative functions.",
+            modifier=Modifier.padding(16.dp)
+        )
     }
 }
